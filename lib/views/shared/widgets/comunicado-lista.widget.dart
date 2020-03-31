@@ -22,7 +22,7 @@ class ComunicadoLista extends StatelessWidget {
     return ListView.separated(
       itemCount: comunicados.length,
       separatorBuilder: (BuildContext context, int index) => Divider(
-        color: ThemeEscola.azulClaro,
+        color: ThemeEscola.corPrimarioClaro,
       ),
       itemBuilder: (BuildContext context, int index) {
         Comunicado comunicado = comunicados[index];

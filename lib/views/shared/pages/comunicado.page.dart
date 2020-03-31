@@ -13,7 +13,7 @@ class ComunicadoPage extends StatelessWidget {
 
     return Scaffold(
       appBar: new AppBar(
-        backgroundColor: ThemeEscola.azul,
+        backgroundColor: ThemeEscola.corPrimario,
         title: new Text("Comunicados"),
       ),
       body: ComunicadoLista(comunicados: controller.comunicados),
