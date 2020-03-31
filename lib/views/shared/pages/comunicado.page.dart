@@ -16,10 +16,7 @@ class ComunicadoPage extends StatelessWidget {
         backgroundColor: ThemeEscola.azul,
         title: new Text("Comunicados"),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(10),
-        child: ComunicadoLista(comunicados: controller.comunicados),
-      ),
+      body: ComunicadoLista(comunicados: controller.comunicados),
     );
   }
 }
