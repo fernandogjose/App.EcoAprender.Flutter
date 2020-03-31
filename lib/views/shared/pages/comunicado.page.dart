@@ -18,11 +18,7 @@ class ComunicadoPage extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            ComunicadoLista(comunicados: controller.comunicados)
-          ],
-        ),
+        child: ComunicadoLista(comunicados: controller.comunicados),
       ),
     );
   }

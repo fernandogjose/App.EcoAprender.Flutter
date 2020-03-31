@@ -11,12 +11,9 @@ class ComunicadoLista extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      child: Loader(
-        callback: lista,
-        object: comunicados,
-      ),
+    return Loader(
+      callback: lista,
+      object: comunicados,
     );
   }
 
