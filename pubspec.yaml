@@ -1,0 +1,23 @@
+name: app_escola_ecoaprender
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.2.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  provider: any # DI
+  dio: any # HttpRequest
+  intl: ^0.15.8 # Conversões de número
+  shared_preferences: ^0.5.3 # Salvar no dispositivo
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
