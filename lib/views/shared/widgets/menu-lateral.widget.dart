@@ -37,33 +37,33 @@ class MenuLateral extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pop();
+              // Navigator.of(context).pop();
               Navigator.push(
                   context,
                   new MaterialPageRoute(
                       builder: (BuildContext context) => new ComunicadoPage()));
             },
           ),
-          new Divider(
-            color: ThemeEscola.corPrimariaEscuro,
-            height: 2.0,
-          ),
-          new ListTile(
-            title: new Text(
-              'Comunicados',
-              style: TextStyle(
-                color: ThemeEscola.corPrimariaEscuro,
-                fontSize: 18,
-              ),
-            ),
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (BuildContext context) => new ComunicadoPage()));
-            },
-          ),
+          // new Divider(
+          //   color: ThemeEscola.corPrimariaEscuro,
+          //   height: 2.0,
+          // ),
+          // new ListTile(
+          //   title: new Text(
+          //     'Comunicados',
+          //     style: TextStyle(
+          //       color: ThemeEscola.corPrimariaEscuro,
+          //       fontSize: 18,
+          //     ),
+          //   ),
+          //   onTap: () {
+          //     Navigator.of(context).pop();
+          //     Navigator.push(
+          //         context,
+          //         new MaterialPageRoute(
+          //             builder: (BuildContext context) => new ComunicadoPage()));
+          //   },
+          // ),
         ],
       ),
     );
