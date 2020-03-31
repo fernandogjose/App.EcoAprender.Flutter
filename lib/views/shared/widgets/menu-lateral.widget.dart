@@ -7,12 +7,12 @@ class MenuLateral extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ThemeEscola.corPrimarioClaro2,
+      color: ThemeEscola.corPrimariaClaro2,
       child: ListView(
         children: <Widget>[
           new UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-              color: ThemeEscola.corPrimario,
+              color: ThemeEscola.corPrimaria,
             ),
             accountName: new Text(
               'Fernando José',
@@ -23,7 +23,7 @@ class MenuLateral extends StatelessWidget {
               style: TextStyle(fontSize: 14),
             ),
             currentAccountPicture: new CircleAvatar(
-              backgroundColor: ThemeEscola.corPrimario,
+              backgroundColor: ThemeEscola.corPrimaria,
               backgroundImage: new NetworkImage(
                   'https://www.flaticon.com/premium-icon/icons/svg/668/668709.svg'),
             ),
@@ -32,7 +32,7 @@ class MenuLateral extends StatelessWidget {
             title: new Text(
               'Comunicados',
               style: TextStyle(
-                color: ThemeEscola.corPrimarioEscuro,
+                color: ThemeEscola.corPrimariaEscuro,
                 fontSize: 18,
               ),
             ),
@@ -45,14 +45,14 @@ class MenuLateral extends StatelessWidget {
             },
           ),
           new Divider(
-            color: ThemeEscola.corPrimarioEscuro,
+            color: ThemeEscola.corPrimariaEscuro,
             height: 2.0,
           ),
           new ListTile(
             title: new Text(
               'Comunicados',
               style: TextStyle(
-                color: ThemeEscola.corPrimarioEscuro,
+                color: ThemeEscola.corPrimariaEscuro,
                 fontSize: 18,
               ),
             ),

@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          backgroundColor: ThemeEscola.corPrimario,
+          backgroundColor: ThemeEscola.corPrimaria,
           title: new Text("Eco Aprender"),
         ),
         drawer: new Drawer(child: MenuLateral()),
