@@ -20,4 +20,11 @@ class ThemeEscola {
   static const double padraoFontSize = 18;
   static const FontWeight padraoFontWeight = FontWeight.normal;
   static const Color padraoFontColor = corPrimaria;
+
+  static const double homeLinkFontSize = 20;
+  static const FontWeight homeLinkFontWeight = FontWeight.normal;
+  static const Color homeLinkFontColor = branco;
+
+  static const Color homeLinkComunicadoCorDeFundo = corPrimaria;
+  static const Color homeLinkAgendaCorDeFundo = corPrimariaEscuro;
 }
