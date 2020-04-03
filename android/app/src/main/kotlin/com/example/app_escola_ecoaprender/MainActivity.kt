@@ -1,4 +1,4 @@
-package com.example.app_escola_ecoaprender
+package com.fernandojose.app_escola_ecoaprender
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
