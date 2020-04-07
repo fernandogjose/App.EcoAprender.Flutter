@@ -1,4 +1,4 @@
-import 'package:app_escola_ecoaprender/views/shared/Pages/home.page.dart';
+import 'package:app_escola_ecoaprender/views/shared/pages/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'controllers/comunicado.controller.dart';

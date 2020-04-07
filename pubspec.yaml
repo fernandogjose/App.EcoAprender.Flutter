@@ -14,6 +14,7 @@ dependencies:
   dio: any # HttpRequest
   intl: ^0.15.8 # Conversões de número
   shared_preferences: ^0.5.3 # Salvar no dispositivo
+  onesignal_flutter: ^2.3.4 # Push Notification
 
 dev_dependencies:
   flutter_test:

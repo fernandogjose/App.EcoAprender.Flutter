@@ -6,7 +6,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="app_escola_ecoaprender"
+        android:label="Eco Aprender"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
