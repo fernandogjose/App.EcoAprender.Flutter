@@ -1,10 +1,10 @@
-class ResponseGenerico {
+class ResponseModel {
   bool sucesso;
   dynamic objeto;
 
-  ResponseGenerico({this.sucesso, this.objeto});
+  ResponseModel({this.sucesso, this.objeto});
 
-  ResponseGenerico.fromJson(Map<String, dynamic> json) {
+  ResponseModel.fromJson(Map<String, dynamic> json) {
     sucesso = json['sucesso'];
     objeto = json['objeto'];
   }

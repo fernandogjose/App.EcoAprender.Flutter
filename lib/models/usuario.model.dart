@@ -1,13 +1,13 @@
-class Usuario {
+class UsuarioModel {
   int id;
   String nome;
   String email;
   String senha;
   String foto;
 
-  Usuario({this.id, this.nome, this.email, this.senha, this.foto});
+  UsuarioModel({this.id, this.nome, this.email, this.senha, this.foto});
 
-  Usuario.fromJson(Map<String, dynamic> json) {
+  UsuarioModel.fromJson(Map<String, dynamic> json) {
     id = json['Id'];
     nome = json['Nome'];
     email = json['Email'];

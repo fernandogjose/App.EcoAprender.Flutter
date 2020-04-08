@@ -5,8 +5,8 @@ import '../repositories/comunicado.repository.dart';
 
 class ComunicadoController extends ChangeNotifier {
   final comunicadoRepository = new ComunicadoRepository();
-  List<Comunicado> comunicados;
-  List<Erro> erros;
+  List<ComunicadoModel> comunicados;
+  List<ErroModel> erros;
 
   ComunicadoController() {
     listar();

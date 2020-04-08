@@ -1,10 +1,10 @@
-class Erro {
+class ErroModel {
   int codigo;
   String descricao;
 
-  Erro({this.codigo, this.descricao});
+  ErroModel({this.codigo, this.descricao});
 
-  Erro.fromJson(Map<String, dynamic> json) {
+  ErroModel.fromJson(Map<String, dynamic> json) {
     codigo = json['Codigo'];
     descricao = json['Descricao'];
   }

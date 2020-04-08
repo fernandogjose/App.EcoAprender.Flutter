@@ -1,13 +1,13 @@
-class Comunicado {
+class ComunicadoModel {
   int id;
   DateTime data;
   String titulo;
   String descricao;
   String grupo;
 
-  Comunicado({this.id, this.data, this.titulo, this.descricao, this.grupo});
+  ComunicadoModel({this.id, this.data, this.titulo, this.descricao, this.grupo});
 
-  Comunicado.fromJson(Map<String, dynamic> json) {
+  ComunicadoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     data = DateTime.parse(json['data']);
     titulo = json['titulo'];

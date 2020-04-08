@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'controllers/comunicado.controller.dart';
 import 'controllers/home.controller.dart';
+import 'views/shared/pages/login.page.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,7 +26,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
       title: 'Eco Aprender',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

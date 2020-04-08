@@ -4,15 +4,14 @@ import '../models/response.model.dart';
 import '../settings.dart';
 
 class ComunicadoRepository {
-  Future<List<Comunicado>> listar() async {
+  Future<List<ComunicadoModel>> listar() async {
     var url = "${Settings.apiUrl}/comunicado/listar";
-
-print(url);
+    
     Response response = await Dio().get(url);
-    ResponseGenerico responseGenerico = ResponseGenerico.fromJson(response.data);
+    ResponseModel responseModel = ResponseModel.fromJson(response.data);
 
-    return (responseGenerico.objeto as List)
-        .map((comunicado) => Comunicado.fromJson(comunicado))
+    return (responseModel.objeto as List)
+        .map((comunicado) => ComunicadoModel.fromJson(comunicado))
         .toList();
   }
 }

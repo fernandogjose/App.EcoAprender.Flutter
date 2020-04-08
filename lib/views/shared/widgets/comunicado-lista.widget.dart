@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 class ComunicadoLista extends StatelessWidget {
-  final List<Comunicado> comunicados;
+  final List<ComunicadoModel> comunicados;
 
   ComunicadoLista({@required this.comunicados});
 
@@ -26,7 +26,7 @@ class ComunicadoLista extends StatelessWidget {
         color: ThemeEscola.corPrimariaClaro,
       ),
       itemBuilder: (BuildContext context, int index) {
-        Comunicado comunicado = comunicados[index];
+        ComunicadoModel comunicado = comunicados[index];
 
         return ListTile(
           title: Text(comunicado.grupo + ' - ' + comunicado.titulo),
