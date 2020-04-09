@@ -3,6 +3,7 @@ import 'package:app_escola_ecoaprender/models/login.model.dart';
 import 'package:app_escola_ecoaprender/models/usuario.model.dart';
 import 'package:app_escola_ecoaprender/themes/themeEscola.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,91 +12,176 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  var request = new LoginModel();
+  LoginModel request = new LoginModel(email: '', senha: '');
+
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext contex) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: Form(
-          key: _formKey,
-          child: ListView(
+      body: Container(
+        // linha do box
+        child: SingleChildScrollView(
+          child: Column(
             children: <Widget>[
-              // e-mail
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: "e-mail",
-                  labelStyle: TextStyle(
-                    color: ThemeEscola.formularioLabelFontColor,
-                    fontWeight: ThemeEscola.formularioLabelFontWeight,
-                    fontSize: ThemeEscola.formularioLabelFontSize,
+              // box verde degrade
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 2.5,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      ThemeEscola.corPrimaria,
+                      ThemeEscola.corPrimariaClaro,
+                    ],
+                  ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(100),
                   ),
                 ),
-                style: TextStyle(
-                  color: ThemeEscola.formularioInputFontColor,
-                  fontWeight: ThemeEscola.formularioInputFontWeight,
-                  fontSize: ThemeEscola.formularioInputFontSize,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.school,
+                      size: 100,
+                      color: ThemeEscola.branco,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          right: 30,
+                          top: 40,
+                        ),
+                        child: Text(
+                          "login Eco Aprender",
+                          style: TextStyle(
+                              color: ThemeEscola.branco,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'e-mail inválido';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  request.email = value;
-                },
               ),
 
-              // Espaço entre os campos
-              SizedBox(height: 10),
+              // formulário
+              Container(
+                padding: EdgeInsets.only(top: 50),
+                child: Column(
+                  children: <Widget>[
+                    // e-mail
+                    Container(
+                      width: MediaQuery.of(context).size.width / 1.2,
+                      height: 50,
+                      padding: EdgeInsets.only(
+                        top: 4,
+                        left: 16,
+                        right: 16,
+                        bottom: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(50),
+                        ),
+                        color: ThemeEscola.branco,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 5,
+                          ),
+                        ],
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.email, color: Colors.grey),
+                          hintText: 'e-mail',
+                          border: InputBorder.none,
+                        ),
+                        onChanged: (value) {
+                          request.email = value;
+                        },
+                      ),
+                    ),
 
-              // senha
-              TextFormField(
-                keyboardType: TextInputType.text,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: "senha",
-                  labelStyle: TextStyle(
-                    color: ThemeEscola.formularioLabelFontColor,
-                    fontWeight: ThemeEscola.formularioLabelFontWeight,
-                    fontSize: ThemeEscola.formularioLabelFontSize,
-                  ),
+                    // senha
+                    Container(
+                      width: MediaQuery.of(context).size.width / 1.2,
+                      height: 50,
+                      margin: EdgeInsets.only(top: 30),
+                      padding: EdgeInsets.only(
+                        top: 4,
+                        left: 16,
+                        right: 16,
+                        bottom: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(50),
+                        ),
+                        color: ThemeEscola.branco,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 5,
+                          ),
+                        ],
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.security, color: Colors.grey),
+                          hintText: 'senha',
+                          border: InputBorder.none,
+                        ),
+                        onChanged: (value) {
+                          request.senha = value;
+                        },
+                      ),
+                    ),
+
+                    // botão de entrar
+                    InkWell(
+                      child: Container(
+                        margin: EdgeInsets.only(top: 80),
+                        width: MediaQuery.of(context).size.width / 1.2,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                ThemeEscola.corPrimaria,
+                                ThemeEscola.corPrimariaClaro
+                              ],
+                            ),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(50))),
+                        child: Center(
+                          child: Text(
+                            'Entrar',
+                            style: TextStyle(
+                              color: ThemeEscola.branco,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        entrar(context);
+                      },
+                    ),
+                  ],
                 ),
-                style: TextStyle(
-                  color: ThemeEscola.formularioInputFontColor,
-                  fontWeight: ThemeEscola.formularioInputFontWeight,
-                  fontSize: ThemeEscola.formularioInputFontSize,
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'senha inválido';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  request.senha = value;
-                },
               ),
-
-              // Espaço entre os campos
-              SizedBox(height: 10),
-
-              // Botão entrar
-              FlatButton(
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      _formKey.currentState.save();
-                      entrar(context);
-                    }
-                  },
-                  child: Text("Entrar"))
             ],
           ),
         ),
@@ -104,6 +190,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   entrar(BuildContext context) async {
+    // Validaçoes do form
+    final snackbar = SnackBar(content: Text('E-mail ou Senha inválidos'));
+    if (request.email.trim() == '' || request.senha.trim() == '') {
+      _scaffoldKey.currentState.showSnackBar(snackbar);
+      return;
+    }
+
+    // chama o login
     LoginController controller = Provider.of<LoginController>(context);
     UsuarioModel response = await controller.entrar(this.request);
 
@@ -113,7 +207,6 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     // login com erro, exibir a mensagem
-    final snackbar = SnackBar(content: Text('E-mail ou Senha inválidos'));
     _scaffoldKey.currentState.showSnackBar(snackbar);
   }
 }
