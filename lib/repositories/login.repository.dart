@@ -10,8 +10,12 @@ class LoginRepository {
 
     Response response = await Dio().post(url, data: request);
     ResponseModel responseModel = ResponseModel.fromJson(response.data);
-    UsuarioModel usuarioModel = UsuarioModel.fromJson(responseModel.objeto);
 
-    return usuarioModel;
+    if (responseModel.objeto != null) {
+      UsuarioModel usuarioModel = UsuarioModel.fromJson(responseModel.objeto);
+      return usuarioModel;
+    }
+
+    return null;
   }
 }

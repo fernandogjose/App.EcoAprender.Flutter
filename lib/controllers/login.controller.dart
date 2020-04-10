@@ -24,8 +24,6 @@ class LoginController extends ChangeNotifier {
     try {
       this.usuario = await loginRepository.entrar(request);
       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-      
-      print(jsonEncode(this.usuario));
       await sharedPreferences.setString("usuario", jsonEncode(this.usuario));
       return this.usuario;
     } catch (ex) {

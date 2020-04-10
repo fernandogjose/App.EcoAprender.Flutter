@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'controllers/comunicado.controller.dart';
 import 'controllers/home.controller.dart';
 import 'controllers/login.controller.dart';
+import 'controllers/menu-lateral.controller.dart';
 import 'views/shared/pages/login.page.dart';
 
 void main() => runApp(MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<HomeController>.value(value: HomeController()),
         ChangeNotifierProvider<ComunicadoController>.value(value: ComunicadoController()),
         ChangeNotifierProvider<LoginController>.value(value: LoginController()),
+        ChangeNotifierProvider<MenuLateralController>.value(value: MenuLateralController()),
       ],
       child: Main(),
     );

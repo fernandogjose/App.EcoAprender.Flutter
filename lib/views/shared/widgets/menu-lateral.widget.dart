@@ -1,10 +1,19 @@
+import 'package:app_escola_ecoaprender/controllers/menu-lateral.controller.dart';
+import 'package:app_escola_ecoaprender/models/usuario.model.dart';
 import 'package:app_escola_ecoaprender/themes/themeEscola.dart';
-import 'package:app_escola_ecoaprender/views/shared/Pages/login.page.dart';
 import 'package:app_escola_ecoaprender/views/shared/pages/comunicado.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class MenuLateral extends StatelessWidget {
+class MenuLateral extends StatefulWidget {
+  @override
+  _MenuLateralState createState() => _MenuLateralState();
+}
+
+class _MenuLateralState extends State<MenuLateral> {
+  UsuarioModel usuarioLogado = new UsuarioModel(nome: 'Eco Aprender', email: 'ecoaprender@email.com');
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,17 +25,16 @@ class MenuLateral extends StatelessWidget {
               color: ThemeEscola.corPrimaria,
             ),
             accountName: new Text(
-              'Fernando José',
+              usuarioLogado.nome,
               style: TextStyle(fontSize: 18),
             ),
             accountEmail: new Text(
-              'fernandogjose@gmail.com',
+              usuarioLogado.email,
               style: TextStyle(fontSize: 14),
             ),
             currentAccountPicture: new CircleAvatar(
               backgroundColor: ThemeEscola.corPrimaria,
-              backgroundImage: new NetworkImage(
-                  'https://www.flaticon.com/premium-icon/icons/svg/668/668709.svg'),
+              backgroundImage: AssetImage('assets/logo-eco-aprender.png'),
             ),
           ),
           new ListTile(
@@ -65,5 +73,24 @@ class MenuLateral extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    obterUsuarioLogado();
+    super.initState();
+  }
+
+  void obterUsuarioLogado() async {
+    MenuLateralController controller = Provider.of<MenuLateralController>(context, listen: false);
+    UsuarioModel usuario = await controller.obterUsuarioLogado();
+
+    if (usuario == null) {
+      return;
+    }
+
+    setState(() {
+      usuarioLogado = usuario;
+    });
   }
 }
