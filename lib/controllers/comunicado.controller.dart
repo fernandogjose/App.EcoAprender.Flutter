@@ -15,6 +15,7 @@ class ComunicadoController extends ChangeNotifier {
   listar() {
     comunicadoRepository.listar().then((response) {
       this.comunicados = response;
+      print("Comunicado $response");
       notifyListeners();
     }).catchError((erros) {
       this.erros = erros;

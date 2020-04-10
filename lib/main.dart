@@ -1,8 +1,8 @@
-import 'package:app_escola_ecoaprender/views/shared/pages/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'controllers/comunicado.controller.dart';
 import 'controllers/home.controller.dart';
+import 'controllers/login.controller.dart';
 import 'views/shared/pages/login.page.dart';
 
 void main() => runApp(MyApp());
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<HomeController>.value(value: HomeController()),
         ChangeNotifierProvider<ComunicadoController>.value(value: ComunicadoController()),
+        ChangeNotifierProvider<LoginController>.value(value: LoginController()),
       ],
       child: Main(),
     );

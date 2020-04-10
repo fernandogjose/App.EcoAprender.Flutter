@@ -8,20 +8,20 @@ class UsuarioModel {
   UsuarioModel({this.id, this.nome, this.email, this.senha, this.foto});
 
   UsuarioModel.fromJson(Map<String, dynamic> json) {
-    id = json['Id'];
-    nome = json['Nome'];
-    email = json['Email'];
-    senha = json['Senha'];
-    foto = json['Foto'];
+    id = json['id'];
+    nome = json['nome'];
+    email = json['email'];
+    senha = json['senha'];
+    foto = json['foto'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Id'] = this.id;
-    data['Nome'] = this.nome;
-    data['Email'] = this.email;
-    data['Senha'] = this.senha;
-    data['Foto'] = this.foto;
+    data['id'] = this.id;
+    data['nome'] = this.nome;
+    data['email'] = this.email;
+    data['senha'] = this.senha;
+    data['foto'] = this.foto;
     return data;
   }
 }

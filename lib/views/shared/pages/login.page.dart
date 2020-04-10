@@ -2,8 +2,8 @@ import 'package:app_escola_ecoaprender/controllers/login.controller.dart';
 import 'package:app_escola_ecoaprender/models/login.model.dart';
 import 'package:app_escola_ecoaprender/models/usuario.model.dart';
 import 'package:app_escola_ecoaprender/themes/themeEscola.dart';
+import 'package:app_escola_ecoaprender/views/shared/pages/home.page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,10 +14,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   LoginModel request = new LoginModel(email: '', senha: '');
+  bool _carregando = false;
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    limparSession();
     super.initState();
   }
 
@@ -39,8 +40,8 @@ class _LoginPageState extends State<LoginPage> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
+                      ThemeEscola.corPrimariaEscuro,
                       ThemeEscola.corPrimaria,
-                      ThemeEscola.corPrimariaClaro,
                     ],
                   ),
                   borderRadius: BorderRadius.only(
@@ -150,23 +151,24 @@ class _LoginPageState extends State<LoginPage> {
                     ),
 
                     // botão de entrar
-                    InkWell(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 80),
-                        width: MediaQuery.of(context).size.width / 1.2,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                ThemeEscola.corPrimaria,
-                                ThemeEscola.corPrimariaClaro
-                              ],
-                            ),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50))),
+                    Container(
+                      margin: EdgeInsets.only(top: 80),
+                      width: MediaQuery.of(context).size.width / 1.2,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              ThemeEscola.corPrimariaEscuro,
+                              ThemeEscola.corPrimaria,
+                            ],
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
+                      child: InkWell(
                         child: Center(
                           child: Text(
-                            'Entrar',
+                            _carregando ? 'Entrando...' : 'Entrar',
                             style: TextStyle(
                               color: ThemeEscola.branco,
                               fontWeight: FontWeight.bold,
@@ -174,10 +176,12 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
+                        onTap: () {
+                          if (!_carregando) {
+                            entrar(context);
+                          }
+                        },
                       ),
-                      onTap: () {
-                        entrar(context);
-                      },
                     ),
                   ],
                 ),
@@ -189,24 +193,61 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  entrar(BuildContext context) async {
+  void limparSession() async {
+    LoginController controller = obterLoginController(context);
+    controller.entrar(request);
+  }
+
+  void preencherCarregando(bool value) {
+    setState(() {
+      _carregando = value;
+    });
+  }
+
+  void navegarParaHome(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  }
+
+  LoginController obterLoginController(BuildContext context) {
+    LoginController controller =
+        Provider.of<LoginController>(context, listen: false);
+
+    return controller;
+  }
+
+  void entrar(BuildContext context) async {
+    // Desabilita o botão
+    preencherCarregando(true);
+
     // Validaçoes do form
     final snackbar = SnackBar(content: Text('E-mail ou Senha inválidos'));
     if (request.email.trim() == '' || request.senha.trim() == '') {
       _scaffoldKey.currentState.showSnackBar(snackbar);
+
+      // Habilita o botão
+      preencherCarregando(false);
       return;
     }
 
     // chama o login
-    LoginController controller = Provider.of<LoginController>(context);
+    LoginController controller = obterLoginController(context);
     UsuarioModel response = await controller.entrar(this.request);
 
     // login com sucesso, navegar até a homepage
     if (response != null) {
-      return;
+      navegarParaHome(context);
+
+      // Habilita o botão
+      preencherCarregando(false);
     }
 
-    // login com erro, exibir a mensagem
+    // login com erro, exibir a mensagem de erro
     _scaffoldKey.currentState.showSnackBar(snackbar);
+
+    // Habilita o botão
+    preencherCarregando(false);
   }
 }

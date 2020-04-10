@@ -12,14 +12,21 @@ class LoginController extends ChangeNotifier {
   List<ErroModel> erros;
   UsuarioModel usuario = new UsuarioModel();
 
+  void limparSession() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    if (sharedPreferences.containsKey("usuario")) {
+      sharedPreferences.remove("usuario");
+    }
+  }
+
   Future<UsuarioModel> entrar(LoginModel request) async {
     try {
-      SharedPreferences sharedPreferences =
-          await SharedPreferences.getInstance();
-
       this.usuario = await loginRepository.entrar(request);
+      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      
+      print(jsonEncode(this.usuario));
       await sharedPreferences.setString("usuario", jsonEncode(this.usuario));
-
       return this.usuario;
     } catch (ex) {
       this.usuario = null;

@@ -8,7 +8,7 @@ class LoginRepository {
   Future<UsuarioModel> entrar(LoginModel request) async {
     var url = "${Settings.apiUrl}/login/entrar";
 
-    Response response = await Dio().get(url);
+    Response response = await Dio().post(url, data: request);
     ResponseModel responseModel = ResponseModel.fromJson(response.data);
     UsuarioModel usuarioModel = UsuarioModel.fromJson(responseModel.objeto);
 

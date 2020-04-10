@@ -1,4 +1,5 @@
 import 'package:app_escola_ecoaprender/themes/themeEscola.dart';
+import 'package:app_escola_ecoaprender/views/shared/Pages/login.page.dart';
 import 'package:app_escola_ecoaprender/views/shared/pages/comunicado.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,26 +45,23 @@ class MenuLateral extends StatelessWidget {
                       builder: (BuildContext context) => new ComunicadoPage()));
             },
           ),
-          // new Divider(
-          //   color: ThemeEscola.corPrimariaEscuro,
-          //   height: 2.0,
-          // ),
-          // new ListTile(
-          //   title: new Text(
-          //     'Comunicados',
-          //     style: TextStyle(
-          //       color: ThemeEscola.corPrimariaEscuro,
-          //       fontSize: 18,
-          //     ),
-          //   ),
-          //   onTap: () {
-          //     Navigator.of(context).pop();
-          //     Navigator.push(
-          //         context,
-          //         new MaterialPageRoute(
-          //             builder: (BuildContext context) => new ComunicadoPage()));
-          //   },
-          // ),
+          new Divider(
+            color: ThemeEscola.corPrimariaEscuro,
+            height: 2.0,
+          ),
+          new ListTile(
+            title: new Text(
+              'Sair',
+              style: TextStyle(
+                color: ThemeEscola.corPrimariaEscuro,
+                fontSize: 18,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/', (Route<dynamic> route) => false);
+            },
+          ),
         ],
       ),
     );
