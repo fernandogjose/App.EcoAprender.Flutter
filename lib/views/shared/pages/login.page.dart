@@ -104,6 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                       child: TextField(
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           icon: Icon(Icons.email, color: Colors.grey),
                           hintText: 'e-mail',
@@ -139,6 +140,8 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                       child: TextField(
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
                         decoration: InputDecoration(
                           icon: Icon(Icons.security, color: Colors.grey),
                           hintText: 'senha',
